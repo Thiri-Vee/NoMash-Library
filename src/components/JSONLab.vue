@@ -7,22 +7,22 @@ import bookstores from '@/assets/json/bookstores.json'
 
 const showMessage = ref(false)
 
-// Activity 2: Get authors born after 1850
+// Activity 2.1: Get authors born after 1850
 const modernAuthors = computed(() => {
   return authors.filter((author) => author.birthYear > 1850)
 })
 
-// Activity 3: Get all famous works
+// Activity 2.2: Get all famous works
 const allFamousWorks = computed(() => {
   return authors.flatMap((author) => author.famousWorks)
 })
 
-// Activity 4: Find author by name
+// [OPTIONAL - NON ASSESSED] Find author by name
 const orwell = computed(() => {
   return authors.find((author) => author.name === 'George Orwell')
 })
 
-// Activity 5: Find author by ID
+// [OPTIONAL - NON ASSESSED] Find author by ID
 const austen = computed(() => {
   return authors.find((author) => author.id === 1)
 })
@@ -31,22 +31,22 @@ const booksByAusten = computed(() => {
   return authors.find((author) => author.id === 1)
 })
 
-// Activity 9a: Get the company name from the bookstores object.
+// [OPTIONAL - NON ASSESSED] Activity 2a: Get the company name from the bookstores object.
 const companyName = computed(() => {
   return bookstores.name
 })
 
-// Activity 9b: Get the total number of stores from the bookstores object.
+// [OPTIONAL - NON ASSESSED] Activity 2b: Get the total number of stores from the bookstores object.
 const totalStores = computed(() => {
   return bookstores.totalStores
 })
 
-// <!-- Activity 10: Iterate through the storeTypes array and display the store type and the number of stores that use that type. -->
+// [OPTIONAL - NON ASSESSED] Activity 3: Iterate through the storeTypes array and display the store type and the number of stores that use that type.
 const storeTypes = computed(() => {
   return JSON.stringify(bookstores.storeTypes)
 })
 
-// <!-- Activity 11: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
+// [OPTIONAL - NON ASSESSED] Activity 4: Iterate through the openingHours object and display the day of the week and the opening and closing times.
 const openingHours = computed(() => {
   return (
     `Weekdays: ` +
@@ -60,12 +60,12 @@ const countriesOperated = computed(() => {
   return bookstores.countries.join(', ')
 })
 
-// <!-- Activity 12: Get the top sellers from the bookstores object. -->
+// [OPTIONAL - NON ASSESSED] Activity 5: Get the top sellers from the bookstores object.
 const topSellers = computed(() => {
   return bookstores.topSellers.join(', ')
 })
 
-// <!-- Activity 13: Toggle the message visibility when the button is clicked. -->
+// Activity 4.1: Toggle the message visibility when the button is clicked.
 const toggleMessage = () => {
   showMessage.value = !showMessage.value
 }
@@ -81,7 +81,7 @@ const toggleMessage = () => {
       <p>Our <code>authors.json</code> contains an array of author objects.</p>
 
       <h3>Iterating through Arrays</h3>
-      <!-- Activity 6: Render a list containing author names and their birth years. Hint: Make use of the v-for directive to iterate through the array of authors. -->
+      <!-- Activity 3.1: Render a list containing author names and their birth years. Hint: Make use of the v-for directive to iterate through the array of authors. -->
       <ul>
         <li v-for="author in authors" :key="author.id">
           {{ author.name }} ({{ author.birthYear }})
@@ -89,7 +89,7 @@ const toggleMessage = () => {
       </ul>
 
       <h3>Filtering Arrays</h3>
-      <!-- Activity 7: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
+      <!-- Activity 3.2: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
       <p>Authors born after 1850:</p>
       <ul>
         <li v-for="author in modernAuthors" :key="author.id">
@@ -99,7 +99,7 @@ const toggleMessage = () => {
 
       <h3>Mapping Arrays</h3>
       <p>Famous works:</p>
-      <!-- Activity 8: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
+      <!-- Activity 3.3: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <ul>
         <li v-for="work in allFamousWorks" :key="work">{{ work.title }} ({{ work.year }})</li>
       </ul>
@@ -109,14 +109,13 @@ const toggleMessage = () => {
 
       <h3>Nested Arrays/Objects</h3>
       <p>{{ austen?.name }}'s works:</p>
-      <!-- Activity 9: Render a list of Austen's works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
+      <!-- [OPTIONAL - NON ASSESSED] Activity 1: Render a list of Austen's works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <ul>
         <li v-for="work in booksByAusten.famousWorks" :key="work">
           {{ work.title }} ({{ work.year }})
         </li>
       </ul>
     </section>
-    ``
 
     <section class="lab-section">
       <h2>🏢 Working with JSON Objects</h2>
@@ -125,27 +124,27 @@ const toggleMessage = () => {
       <h3>Accessing Properties</h3>
       <p>
         Company:
-        <!-- Activity 9a: Get the company name from the bookstores object. -->
+        <!-- [OPTIONAL - NON ASSESSED] Activity 2a: Get the company name from the bookstores object. -->
         {{ companyName }}
       </p>
 
       <p>
         Total Stores: {{ totalStores }}
-        <!-- Activity 9b: Get the total number of stores from the bookstores object. -->
+        <!-- [OPTIONAL - NON ASSESSED] Activity 2b: Get the total number of stores from the bookstores object. -->
       </p>
 
       <h3>Iterating Object Properties</h3>
       <p>Store Types:</p>
-      <!-- Activity 10: Iterate through the storeTypes array and display the store type and the number of stores that use that type. -->
+      <!-- [OPTIONAL - NON ASSESSED] Activity 3: Iterate through the storeTypes array and display the store type and the number of stores that use that type. -->
       {{ storeTypes }}
 
       <h3>Nested Objects</h3>
       <p>Opening Hours:</p>
-      <!-- Activity 11: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
+      <!-- [OPTIONAL - NON ASSESSED] Activity 4: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
       {{ openingHours }}
 
       <h3>Working with Arrays in Objects</h3>
-      <!-- Activity 12: Get the top sellers from the bookstores object. -->
+      <!-- [OPTIONAL - NON ASSESSED] Activity 5: Get the top sellers from the bookstores object. -->
       <!-- TODO: CODE TO GET TOP SELLERS HERE -->
       <p>We operate in: {{ countriesOperated }}</p>
       <p>Our #1 seller: {{ topSellers }}</p>
@@ -154,13 +153,14 @@ const toggleMessage = () => {
     <section class="lab-section">
       <h2>v-if & v-else</h2>
       <p>Toggle visibility based on a condition.</p>
-      <!-- Activity 13: Toggle the message visibility when the button is clicked. -->
+      <!-- Activity 4.1: Toggle the message visibility when the button is clicked. -->
       <button @click="showMessage = !showMessage">Toggle Message</button>
       <p class="message success" v-if="showMessage">✨ You're a Vue superstar! ✨</p>
       <p>Click the button to see a message.</p>
     </section>
 
     <section class="lab-section">
+      <!-- [OPTIONAL - POST LAB] Activity 5: Attribute, Class and Style Bindings -->
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
       <p>Let's highlight authors who have a birth year greater than 1900.</p>
